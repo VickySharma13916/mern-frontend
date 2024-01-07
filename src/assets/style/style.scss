@@ -1,0 +1,376 @@
+@import "~bootstrap/scss/bootstrap";
+@import "variable";
+@media (min-width: 1400px) {
+
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl,
+    .container-xxl {
+        max-width: 100%;
+
+        padding-left: 65px !important;
+        padding-right: 65px !important;
+    }
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.header {
+    box-shadow: none;
+    min-height: 65px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    background-color: hsla(0, 0%, 98%, 0);
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.card {
+    border: 0;
+    box-shadow: $box-shadow-4;
+
+    &-header {
+        background-color: transparent;
+        // border          : 0;
+        // font-size       : 2rem;
+        font-weight: 700;
+        color: $gray-900;
+    }
+}
+
+.main_page {
+    background-color: #eee;
+    height: 89vh;
+}
+
+.header {
+    font-weight: 700;
+    color: #262626;
+}
+
+input {
+    appearance: none;
+    background-color: #f5f5f5;
+    padding: 1.25rem 1rem 0.85rem;
+    border-radius: 4px;
+    border: 3px solid #e0e0e0;
+    font-size: 14px;
+    width: 100%;
+    outline: none !important;
+    line-height: 1;
+    font-weight: 600;
+    color: #3f3f3f;
+    transition: all 0.2s ease, letter-spacing 0s;
+}
+
+label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    transform-origin: 0 0;
+    transform: translate3d(18px, 5px, 0) !important;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform 0.2s, color 0.2s ease-in-out;
+    color: #3f3f3f;
+    cursor: text;
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+
+input:focus {
+    border-color: #c8e8ff;
+    background-color: #fbfbfb;
+}
+
+input:focus+label {
+    transform: translate3d(18px, 5px, 0) scale(0.75) !important;
+    color: #40afff;
+}
+
+.input-error {
+    position: absolute;
+    color: #f93154;
+    font-size: 12px;
+    top: 60px;
+    font-weight: 500;
+    bottom: 0;
+    left: 18px;
+    display: inline-block;
+    word-wrap: normal;
+    width: 100%;
+    height: 20px;
+    line-height: 1;
+}
+
+.font-color {
+    color: #22a2ff;
+}
+
+.btn {
+    outline: none !important;
+    border-radius: 40px;
+    border-width: 3px !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
+        rgba(0, 0, 0, 0.12) 0px 1px 5px 0px !important;
+    transition: all 0.5s ease !important;
+    font-weight: 500 !important;
+    color: $gray-700 !important;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-primary,
+    &-secondary,
+    &-info,
+    &-warning,
+    &-danger {
+        color: $white !important;
+    }
+
+    &-outline-primary {
+        color: $primary !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    &-outline-secondary {
+        color: $secondary !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    &-outline-info {
+        color: $info !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    &-outline-warning {
+        color: $warning !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    &-outline-danger {
+        color: $danger !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    &-light {
+        color: $gray-700 !important;
+        background-color: $gray-100 !important;
+        box-shadow: $box-shadow-1 !important;
+    }
+
+    &-link {
+        color: $secondary !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    &-outline-link {
+        color: $secondary !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    &-icon {
+        &>span {
+            display: flex;
+            position: relative;
+            padding-left: 1.65rem;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0;
+            height: 24px;
+
+            &>svg {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -0.15rem;
+            }
+        }
+
+        &-loading {
+            &>span {
+                &>svg {
+                    visibility: hidden;
+                }
+
+                &:before {
+                    content: ' ';
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 0rem;
+                    width: 1.05rem;
+                    height: 1.05rem;
+                    border-radius: 50%;
+                    border-top: 2px solid $white;
+                    border-right: 2px solid transparent;
+                    animation: spinner 0.6s linear infinite;
+                }
+            }
+        }
+    }
+
+    &-outline-default {
+        &.btn-icon {
+            &-loading {
+                &>span {
+                    &:before {
+                        border-top-color: $gray-700 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &-outline-primary {
+        &.btn-icon {
+            &-loading {
+                &>span {
+                    &:before {
+                        border-top-color: $primary !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &-outline-info {
+        &.btn-icon {
+            &-loading {
+                &>span {
+                    &:before {
+                        border-top-color: $info !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &-outline-warning {
+        &.btn-icon {
+            &-loading {
+                &>span {
+                    &:before {
+                        border-top-color: $warning !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &-outline-danger {
+        &.btn-icon {
+            &-loading {
+                &>span {
+                    &:before {
+                        border-top-color: $danger !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &-outline-secondary,
+    &-outline-link {
+        &.btn-icon {
+            &-loading {
+                &>span {
+                    &:before {
+                        border-top-color: $secondary !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &.btn-sm {
+        &.btn-icon {
+            &>span {
+                padding-left: 1.25rem;
+                line-height: unset;
+                height: 20px;
+            }
+
+            &-loading {
+                &>span {
+                    &:before {
+                        width: 0.85rem;
+                        height: 0.85rem;
+                        left: 1px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.btn-lg {
+        &.btn-icon {
+            &>span {
+                padding-left: 2.25rem;
+                line-height: unset;
+            }
+
+            &-loading {
+                &>span {
+                    &:before {
+                        width: 1.4rem;
+                        height: 1.4rem;
+                        left: 3px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.btn-lg,
+    &.btn-group-lg {
+        font-size: 1rem !important;
+        height: 54px;
+    }
+
+    &:disabled,
+    &.disabled {
+        opacity: 0.4 !important;
+        box-shadow: $box-shadow-6 !important;
+    }
+}
+
+.btn-primary {
+    background-color: #22a2ff !important;
+    border-color: #22a2ff !important;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: darken(#22a2ff, 10%) !important;
+        border-color: darken(#22a2ff, 10%) !important;
+    }
+}
+
+@keyframes spinner {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.dropdown-menu[data-bs-popper] {
+    left: auto;
+    right: 0;
+}
