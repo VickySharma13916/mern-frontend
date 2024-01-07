@@ -26,7 +26,7 @@ Create a .env file in the root directory and add the following environment varia
 
 env
 Copy code
-REACT_APP_API_URL=your-backend-api-url
+REACT_APP_API_URL=https://mern-stack-backend-71mo.onrender.com/api
 Replace your-backend-api-url with the URL of your deployed backend API.
 
 Start the development server:
@@ -49,9 +49,9 @@ Edit Note: Users can modify the title and description of an existing note.
 Delete Note: Allows users to delete a note.
 Logout: Provides an option to log out.
 Deployment
-The frontend is deployed on Netlify at your-netlify-app-url.
+The frontend is deployed on Netlify at https://front-end-mern-stack.netlify.app/.
 
 Contributors
-Your Name (GitHub)
+VickySharma13916
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
