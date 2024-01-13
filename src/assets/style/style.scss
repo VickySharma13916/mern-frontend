@@ -19,6 +19,72 @@
     width: 100%;
     height: 100%;
     position: relative;
+    background-color: #eee;
+}
+
+.layout {
+    background-color: #eee;
+    color: #000;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.loading-indicator {
+    position: fixed;
+    height: 5px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    background-color: tint(#22a2ff, 75%);
+    overflow: hidden;
+
+    .line {
+        position: absolute;
+        opacity: 0.4;
+        background-color: #22a2ff;
+        width: 150%;
+        height: 5px;
+    }
+
+    .subline {
+        position: absolute;
+        background-color: #22a2ff;
+        height: 5px;
+    }
+
+    .inc {
+        animation: increase 2s infinite;
+    }
+
+    .dec {
+        animation: decrease 2s 0.5s infinite;
+    }
+
+    @keyframes increase {
+        from {
+            left: -5%;
+            width: 5%;
+        }
+
+        to {
+            left: 130%;
+            width: 100%;
+        }
+    }
+
+    @keyframes decrease {
+        from {
+            left: -80%;
+            width: 80%;
+        }
+
+        to {
+            left: 110%;
+            width: 10%;
+        }
+    }
 }
 
 .header {
@@ -373,4 +439,48 @@ input:focus+label {
 .dropdown-menu[data-bs-popper] {
     left: auto;
     right: 0;
+}
+
+aside {
+    position: fixed;
+    width: 256px;
+    left: 0;
+    top: 65px;
+    height: calc(100% - 65px);
+    z-index: 1000;
+    background-color: transparent;
+}
+
+main {
+    margin-left: 256px;
+    width: calc(100% - 256px);
+}
+
+.sidebar {
+
+    .nav-item {
+        color: #757575 !important;
+        background-color: #eee !important;
+        transition: all .3s ease;
+        font-weight: 600;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-bottom-right-radius: 32px !important;
+        border-top-right-radius: 32px !important;
+        margin-top: 0.375rem !important;
+        box-shadow: none !important;
+
+    }
+
+    .nav-item:hover {
+        background-color: #e0e0e0 !important;
+    }
+
+    .nav .active {
+        background-color: #22a2ff !important;
+        color: #fff !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .5) !important;
+    }
 }

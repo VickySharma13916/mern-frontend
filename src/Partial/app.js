@@ -1,44 +1,53 @@
 import { SnackbarProvider } from "notistack";
-import React from "react";
+import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import Header from "../Component/Header";
+import Loader from "../Component/Loader";
+import SideBar from "../Component/SideBar";
 import ProtectedRoute from "../Utils/ProtecterateRoute";
 import "../assets/style/style.scss";
-import Dashboard from "./Dashboard";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import Header from "../Component/Header";
-import AddNotes from "./AddNotes/AddNotes";
-import EditNotes from "./EditNotes/EditNotes";
-import ViewNotes from "./ViewNotes/ViewNotes";
-
+// Lazy-loaded components
+const Login = React.lazy(() => import("./auth/Login"));
+const Register = React.lazy(() => import("./auth/Register"));
+const Notes = React.lazy(() => import("./Notes"));
+const AddNotes = React.lazy(() => import("./Notes/AddNotes"));
+const EditNotes = React.lazy(() => import("./Notes/EditNotes"));
+const ViewNotes = React.lazy(() => import("./Notes/ViewNotes"));
 function App() {
   return (
-    <SnackbarProvider
-      maxSnack={4}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center",
-      }}
-      autoHideDuration={3000}
-      style={{
-        success: { backgroundColor: "#00b74a", color: "#ffffff" },
-        error: { backgroundColor: "#f93154", color: "#ffffff" },
-        warning: { backgroundColor: "#ffa900", color: "#ffffff" },
-        info: { backgroundColor: "#39c0ed", color: "#ffffff" },
-      }}
-    >
-      <Header />
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/AddNotes" element={<AddNotes />} />
-          <Route path="/EditNotes/:id" element={<EditNotes />} />
-          <Route path="/ViewNotes/:id" element={<ViewNotes />} />
-        </Route>
-      </Routes>
-    </SnackbarProvider>
+    <div className="w-100 layout position-relative">
+      <SnackbarProvider
+        maxSnack={4}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        autoHideDuration={3000}
+        style={{
+          success: { backgroundColor: "#00b74a", color: "#ffffff" },
+          error: { backgroundColor: "#f93154", color: "#ffffff" },
+          warning: { backgroundColor: "#ffa900", color: "#ffffff" },
+          info: { backgroundColor: "#39c0ed", color: "#ffffff" },
+        }}
+      >
+        <Header />
+        <SideBar />
+        <main className="main-container">
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/" element={<ProtectedRoute />}>
+                <Route path="/notes" element={<Notes />} />
+                <Route path="/AddNotes" element={<AddNotes />} />
+                <Route path="/EditNotes/:id" element={<EditNotes />} />
+                <Route path="/ViewNotes/:id" element={<ViewNotes />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </main>
+      </SnackbarProvider>
+    </div>
   );
 }
 

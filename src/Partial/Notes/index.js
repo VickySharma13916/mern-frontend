@@ -1,12 +1,12 @@
+import axios from "axios";
+import { useSnackbar } from "notistack";
 import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { IoMdAddCircle } from "react-icons/io";
-import CardComponent from "../../Component/Card";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useSnackbar } from "notistack";
+import CardComponent from "../../Component/Card";
 import ShimmerCard from "../../Component/ShimmerCard";
-const Dashboard = () => {
+const Notes = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [isLogin, setIsLogin] = useState(true);
   const [data, setData] = useState(null);
@@ -38,7 +38,8 @@ const Dashboard = () => {
     <div>
       <Container fluid>
         <Row className="w-100 py-3">
-          <Col xs={12} className=" d-flex justify-content-end">
+          <Col xs={12} className=" d-flex justify-content-between">
+            <h2 className="ps-4">Notes</h2>
             <Button
               variant="primary"
               className="d-flex justify-content-between"
@@ -89,4 +90,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Notes;
