@@ -1,5 +1,5 @@
 import { SnackbarProvider } from "notistack";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "../Component/Header";
 import Loader from "../Component/Loader";
@@ -14,6 +14,10 @@ const AddNotes = React.lazy(() => import("./Notes/AddNotes"));
 const EditNotes = React.lazy(() => import("./Notes/EditNotes"));
 const ViewNotes = React.lazy(() => import("./Notes/ViewNotes"));
 function App() {
+  const [isUserLogin, SetIsUserLogin] = useState(false);
+  useEffect(() => {
+    SetIsUserLogin(localStorage.getItem("user"));
+  }, [isUserLogin]);
   return (
     <div className="w-100 layout position-relative">
       <SnackbarProvider
@@ -30,12 +34,15 @@ function App() {
           info: { backgroundColor: "#39c0ed", color: "#ffffff" },
         }}
       >
-        <Header />
-        <SideBar />
-        <main className="main-container">
+        <Header SetIsUserLogin={SetIsUserLogin} />
+        {isUserLogin && <SideBar />}
+        <main className={`${isUserLogin ? "main-container" : "w-100 ms-0"}`}>
           <Suspense fallback={<Loader />}>
             <Routes>
-              <Route path="/" element={<Login />} />
+              <Route
+                path="/"
+                element={<Login SetIsUserLogin={SetIsUserLogin} />}
+              />
               <Route path="/register" element={<Register />} />
               <Route path="/" element={<ProtectedRoute />}>
                 <Route path="/notes" element={<Notes />} />

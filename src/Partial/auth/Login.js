@@ -17,7 +17,7 @@ const loginRules = yupResolver(
     .required()
 );
 
-const Login = () => {
+const Login = ({ SetIsUserLogin }) => {
   const { enqueueSnackbar } = useSnackbar();
   const {
     register,
@@ -55,6 +55,7 @@ const Login = () => {
       // Store the token in localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("user", response?.data?.user?.name);
+      SetIsUserLogin(true);
       navigate("/dashboard");
     } catch (error) {
       if (error.response) {
@@ -73,7 +74,7 @@ const Login = () => {
         className="w-100 mx-auto pt-3 pb-4 px-4"
         style={{ maxWidth: 400 }}
       >
-        <Card.Header >Sign in</Card.Header>
+        <Card.Header>Sign in</Card.Header>
         <Card.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Row>

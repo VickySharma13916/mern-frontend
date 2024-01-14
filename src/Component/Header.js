@@ -3,15 +3,19 @@ import { Container, NavDropdown, Navbar } from "react-bootstrap";
 import { IoIosLogOut } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import useWindowSize from "../hooks/UseWindowSize";
+import { useSnackbar } from "notistack";
 
-const Header = () => {
+const Header = ({ SetIsUserLogin }) => {
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
   const isMobile = useWindowSize();
   const User = localStorage.getItem("user");
   const handleLogout = () => {
+    SetIsUserLogin(false);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/");
+    enqueueSnackbar("User Logout!!!!", { variant: "info" });
   };
   return (
     <Navbar sticky="top" className="header">

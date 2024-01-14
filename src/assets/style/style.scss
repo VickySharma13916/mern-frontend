@@ -484,3 +484,49 @@ main {
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .5) !important;
     }
 }
+
+// image upload 
+
+.image-uploader-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 1rem 0;
+    position: relative;
+    flex-direction: column;
+    width: 160px;
+
+    & .add-image-icon {
+        width: 30px !important;
+        height: 30px !important;
+        position: absolute;
+        bottom: 15px;
+        right: 51px;
+
+        & span {
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0;
+            height: 24px;
+            margin-left: 0px;
+        }
+    }
+}
+
+.image-container {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.brandimage {
+    font-size: 14px;
+    font-weight: 500;
+    color: #262626;
+    cursor: text;
+    width: 200px;
+    background-color: #fff;
+}

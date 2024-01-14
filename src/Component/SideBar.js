@@ -3,25 +3,10 @@ import { Nav } from "react-bootstrap";
 import { AiOutlineMenu } from "react-icons/ai";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { NavLink } from "react-router-dom";
+import { routes } from "../Utils/routes";
 import useWindowSize from "../hooks/UseWindowSize";
-import { FaEdit } from "react-icons/fa";
-import { MdSpaceDashboard } from "react-icons/md";
 
 const SideBar = () => {
-  const routes = [
-    {
-      key: "note",
-      name: "Notes",
-      route: "/notes",
-      icon: <FaEdit size={20} />,
-    },
-    {
-      key: "dashboard",
-      name: "Dashboard",
-      route: "/dashboard",
-      icon: <MdSpaceDashboard size={20} />,
-    },
-  ];
   const [allowedRoutes, setAllowedRoutes] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isMobile = useWindowSize();
